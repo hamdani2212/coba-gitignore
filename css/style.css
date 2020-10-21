@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "rubik";
+  src: url(../font/rubik-regular-webfont.woff) format("woff");
+}
+@font-face {
+  font-family: "rubik";
+  src: url(../font/rubik-regular-webfont.woff) format("woff");
+}
+
+body {
+  font: 19px/38px "rubik", arial, sans-serif;
+  background-color: #eaeaea;
+}
+
+.judul {
+  font-size: 75px;
+  margin: 96px;
+  text-align: center;
+  color: #fafafa;
+  text-shadow: 2px 2px 5px rgba(242, 133, 0, 0.7);
+}
+
+.gallery {
+  width: 1000px;
+  padding: 19px;
+  background-color: #fafafa;
+  border-radius: 19px;
+  margin: auto;
+  box-shadow: 0px 0px 5px #f28500;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery li {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #f28500;
+  position: relative;
+  margin: 22px;
+}
+
+.gallery li span {
+  display: inline-block;
+  border-radius: 50%;
+  width: 190px;
+  height: 190px;
+  background-color: rgba(35, 35, 35, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 190px;
+  font-size: 33px;
+  color: #fafafa;
+  text-shadow: 2px 2px 5px #232323;
+  opacity: 0;
+  transform: scale(0);
+  transition: .3s;
+}
+
+.gallery li a:hover span {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* overlay */
+.overlay {
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 0, 0, .8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay:target {
+  width: auto;
+  height: auto;
+  bottom: 0;
+  right: 0;
+}
+
+.overlay .full {
+  width: 0;
+  height: 0;
+}
+
+.overlay:target .full {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  animation: zoomFade .3s backwards .3s;
+}
+
+.overlay .close,
+.overlay .next,
+.overlay .previous {
+  opacity: 0;
+}
+
+.overlay:target .close,
+.overlay:target .next,
+.overlay:target .previous {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, -6%);
+  display: flex;
+  padding: 3px;
+  border: 1px solid #fafafa;
+  background-color: #c22222;
+  color: #fafafa;
+  text-decoration: none;
+  animation: slideDown .3s backwards .6s;
+  opacity: 1;
+}
+
+.overlay:target .next {
+  left: 63%;
+  color: #33e90f;
+  border: none;
+  background-color: transparent;
+  font-size: 50px;
+}
+.overlay:target .next:hover {
+  color: #8eee7a;
+}
+
+.overlay:target .previous {
+  left: 37%;
+  color: #33e90f;
+  border: none;
+  background-color: transparent;
+  font-size: 50px;
+}
+.overlay:target .previous:hover {
+  color: #8eee7a;
+}
+
+
+/* animation */
+@keyframes zoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(0)
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    margin-top: -19px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
